@@ -1,0 +1,59 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: tattoo_postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tattoo_salon
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d tattoo_salon"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - tattoo_network
+
+  backend:
+    build: ./backend
+    container_name: tattoo_backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres:5432/tattoo_salon
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    networks:
+      - tattoo_network
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: tattoo_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - tattoo_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  tattoo_network:
+    driver: bridge
