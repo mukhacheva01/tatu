@@ -1,22 +1,20 @@
 import React from 'react'
+import Section from '../shared/ui/Section'
+import Button from '../shared/ui/Button'
 
 function About() {
   return (
-    <section className="py-20 px-4 bg-light">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <Section id="about" className="bg-light" containerClassName="grid md:grid-cols-2 gap-12 items-center">
         <div className="bg-gray-300 h-96 rounded-lg"></div>
         <div>
-          <h2 className="font-serif text-4xl mb-6">About us</h2>
+          <h2 className="font-serif text-4xl mb-6">О нас</h2>
           <p className="text-gray-700 leading-relaxed mb-6">
             Мастер по созданию уникальных татуировок с многолетним опытом. 
             Специализируемся на индивидуальных эскизах и реализации самых смелых идей.
           </p>
-          <button className="border-2 border-dark px-6 py-2 hover:bg-dark hover:text-light transition-all duration-300">
-            Booking / consultation
-          </button>
+          <Button size="sm">Записаться на консультацию</Button>
         </div>
-      </div>
-    </section>
+    </Section>
   )
 }
 
