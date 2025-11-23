@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import Section from '../shared/ui/Section'
+import Button from '../shared/ui/Button'
 
 function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' })
@@ -16,8 +18,7 @@ function Contact() {
   }
 
   return (
-    <section className="py-20 px-4 bg-dark text-light">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+    <Section id="contact" className="bg-dark text-light" containerClassName="grid md:grid-cols-2 gap-12">
         <div>
           <h2 className="font-serif text-4xl mb-6">Контакты</h2>
           <div className="space-y-4 text-gray-300">
@@ -59,12 +60,9 @@ function Contact() {
             onChange={(e) => setFormData({...formData, message: e.target.value})}
             required
           ></textarea>
-          <button type="submit" className="border-2 border-light px-8 py-3 hover:bg-light hover:text-dark transition-all">
-            Отправить
-          </button>
+          <Button type="submit">Отправить</Button>
         </form>
-      </div>
-    </section>
+    </Section>
   )
 }
 
