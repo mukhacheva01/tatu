@@ -34,7 +34,7 @@ function CertificateModal({ isOpen, onClose }) {
       
       {/* Modal */}
       <div 
-        className="relative bg-black border-4 border-pink-500 rounded-2xl shadow-[0_0_60px_rgba(236,72,153,0.6)] max-w-md w-full max-h-[90vh] overflow-hidden animate-slideUp"
+        className="relative bg-black border-2 md:border-4 border-pink-500 rounded-xl md:rounded-2xl shadow-[0_0_60px_rgba(236,72,153,0.6)] max-w-md w-full max-h-[90vh] overflow-hidden animate-slideUp mx-4"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Декоративные элементы */}
@@ -42,19 +42,19 @@ function CertificateModal({ isOpen, onClose }) {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
         
         {/* Header */}
-        <div className="relative bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 p-8 text-center overflow-hidden">
+        <div className="relative bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 p-6 md:p-8 text-center overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10">
-            <h2 className="font-display text-4xl uppercase tracking-wider text-black font-black drop-shadow-lg">
+            <h2 className="font-horror text-2xl md:text-4xl uppercase tracking-wider text-black font-black drop-shadow-lg">
               Купить сертификат
             </h2>
-            <p className="text-black font-bold text-base mt-2">Идеальный подарок для любителей тату</p>
+            <p className="text-black font-bold text-sm md:text-base mt-2">Идеальный подарок для любителей тату</p>
           </div>
         </div>
 
         {/* Form */}
         <div className="max-h-[calc(90vh-200px)] overflow-y-auto custom-scrollbar">
-          <form onSubmit={handleSubmit} className="p-6 space-y-5 relative z-10">
+          <form onSubmit={handleSubmit} className="p-4 md:p-6 space-y-4 md:space-y-5 relative z-10">
             <div className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 border-2 border-pink-500 rounded-xl p-5 mb-4 shadow-lg">
               <p className="text-pink-400 text-base font-black uppercase tracking-wider mb-3 flex items-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

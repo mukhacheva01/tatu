@@ -12,12 +12,14 @@ export default {
         accent: '#ff2a6d',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
-        display: ['Oswald', 'Inter', 'sans-serif'],
+        serif: ['Oranienbaum', 'serif'],
+        sans: ['Oranienbaum', 'serif'],
+        display: ['Old Horror Films', 'Oswald', 'sans-serif'],
         russo: ['Russo One', 'serif'],
         manrope: ['Manrope', 'Inter', 'sans-serif'],
         rubik: ['Rubik', 'Inter', 'sans-serif'],
+        horror: ['Old Horror Films', 'sans-serif'],
+        oranienbaum: ['Oranienbaum', 'serif'],
       }
     },
   },

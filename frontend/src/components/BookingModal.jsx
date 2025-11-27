@@ -111,7 +111,7 @@ function BookingModal({ isOpen, onClose }) {
       
       {/* Modal */}
       <div 
-        className="relative bg-gradient-to-br from-black via-gray-900 to-black border-2 border-pink-500 rounded-lg shadow-2xl shadow-pink-500/50 max-w-md w-full max-h-[90vh] overflow-y-auto animate-slideUp"
+        className="relative bg-gradient-to-br from-black via-gray-900 to-black border-2 border-pink-500 rounded-lg shadow-2xl shadow-pink-500/50 max-w-md w-full max-h-[90vh] overflow-y-auto animate-slideUp mx-4"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -123,15 +123,15 @@ function BookingModal({ isOpen, onClose }) {
         </button>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-pink-600 to-pink-500 p-6 text-center">
-          <h2 className="font-display text-3xl uppercase tracking-wider text-black font-bold">
+        <div className="bg-gradient-to-r from-pink-600 to-pink-500 p-4 md:p-6 text-center">
+          <h2 className="font-horror text-2xl md:text-3xl uppercase tracking-wider text-black font-bold">
             Запись на сеанс
           </h2>
-          <p className="text-black/80 text-sm mt-2 font-semibold">Заполни форму и мы свяжемся с тобой</p>
+          <p className="text-black/80 text-xs md:text-sm mt-2 font-semibold">Заполни форму и мы свяжемся с тобой</p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-4 md:p-6 space-y-3 md:space-y-4">
           <div>
             <label className="block text-pink-500 text-sm font-bold mb-2 uppercase tracking-wide">
               Имя *
@@ -253,14 +253,14 @@ function BookingModal({ isOpen, onClose }) {
               <label className="block text-pink-500 text-sm font-bold mb-2 uppercase tracking-wide">
                 Выбери время *
               </label>
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                 {timeSlots.map(slot => (
                   <button
                     key={slot}
                     type="button"
                     onClick={() => setFormData({...formData, time: slot})}
                     className={`
-                      py-2 px-3 rounded text-sm font-bold transition-all
+                      py-2 px-2 sm:px-3 rounded text-xs sm:text-sm font-bold transition-all
                       ${formData.time === slot 
                         ? 'bg-pink-500 text-black' 
                         : 'bg-black border border-pink-500/50 text-pink-500 hover:border-pink-500 hover:bg-pink-500/10'

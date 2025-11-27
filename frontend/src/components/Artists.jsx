@@ -1,11 +1,14 @@
 import React from 'react'
 import Section from '../shared/ui/Section'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function Artists() {
+  const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 })
+
   return (
     <Section id="artists" className="bg-dark text-light">
       <div className="max-w-2xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-8 items-center">
+        <div ref={ref} className={`flex flex-col md:flex-row gap-8 items-center scroll-fade-up ${isVisible ? 'visible' : ''}`}>
           {/* Фото мастера */}
           <div className="w-full md:w-1/2">
             <div className="aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">

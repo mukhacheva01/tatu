@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
-function InfoCard({ title, children, icon }) {
+function InfoCard({ title, children, icon, delay = 0 }) {
+  const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 })
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovered, setIsHovered] = useState(false)
 
@@ -14,7 +16,9 @@ function InfoCard({ title, children, icon }) {
 
   return (
     <div 
-      className="relative bg-gradient-to-br from-gray-900 to-black border-2 border-pink-500/30 rounded-xl p-6 hover:border-pink-500 transition-all hover:shadow-lg hover:shadow-pink-500/20 overflow-hidden group"
+      ref={ref}
+      className={`relative bg-gradient-to-br from-gray-900 to-black border-2 border-pink-500/30 rounded-xl p-4 md:p-6 hover:border-pink-500 transition-all hover:shadow-lg hover:shadow-pink-500/20 overflow-hidden group scroll-fade-up ${isVisible ? 'visible' : ''}`}
+      style={{ transitionDelay: `${delay}ms` }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -39,14 +43,14 @@ function InfoCard({ title, children, icon }) {
         <div className="absolute bottom-0 right-0 w-56 h-56 bg-purple-600/50 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 flex items-start gap-4">
-        <div className="flex-1">
-          <h3 className="text-pink-500 font-bold text-xl mb-3 uppercase tracking-wide">{title}</h3>
-          <div className="text-gray-300 text-sm leading-relaxed">
+      <div className="relative z-10 flex flex-col sm:flex-row items-start gap-3 md:gap-4">
+        <div className="flex-1 w-full">
+          <h3 className="text-pink-500 font-bold text-lg md:text-xl mb-2 md:mb-3 uppercase tracking-wide">{title}</h3>
+          <div className="text-gray-300 text-xs md:text-sm leading-relaxed">
             {children}
           </div>
         </div>
-        <div className="w-20 h-20 bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-lg flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300">
+        <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-lg flex items-center justify-center text-3xl md:text-4xl group-hover:scale-110 transition-transform duration-300 mx-auto sm:mx-0">
           {icon}
         </div>
       </div>
@@ -56,10 +60,11 @@ function InfoCard({ title, children, icon }) {
 
 function InfoCards() {
   return (
-    <section className="bg-black py-12 px-4">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+    <section className="bg-black py-8 md:py-12 px-4">
+      <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {/* Карточка 1: Адрес */}
-        <InfoCard 
+        <InfoCard
+          delay={0} 
           title="Адрес:" 
           icon={
             <svg className="w-10 h-10 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
@@ -73,7 +78,8 @@ function InfoCards() {
         </InfoCard>
 
         {/* Карточка 2: Опыт */}
-        <InfoCard 
+        <InfoCard
+          delay={200} 
           title="Опыт:" 
           icon={
             <svg className="w-10 h-10 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
@@ -87,7 +93,8 @@ function InfoCards() {
         </InfoCard>
 
         {/* Карточка 3: Мастерство */}
-        <InfoCard 
+        <InfoCard
+          delay={400} 
           title="Мастерство:" 
           icon={
             <svg className="w-10 h-10 text-pink-500" fill="currentColor" viewBox="0 0 24 24">

@@ -1,0 +1,42 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: tattoo-postgres
+    env: docker
+    plan: free
+    dockerfilePath: ./database/Dockerfile
+    envVars:
+      - key: POSTGRES_USER
+        value: user
+      - key: POSTGRES_PASSWORD
+        generateValue: true
+      - key: POSTGRES_DB
+        value: tattoo_salon
+
+  # Backend API
+  - type: web
+    name: tattoo-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tattoo-postgres
+          property: connectionString
+    healthCheckPath: /
+
+  # Frontend
+  - type: web
+    name: tattoo-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: tattoo-backend
+          property: host

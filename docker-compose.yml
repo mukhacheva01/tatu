@@ -23,7 +23,7 @@ services:
     build: ./backend
     container_name: tattoo_backend
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       DATABASE_URL: postgresql://user:password@postgres:5432/tattoo_salon
     depends_on:
@@ -41,7 +41,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - VITE_API_URL=http://localhost:8000
+      - VITE_API_URL=http://localhost:8001
     depends_on:
       - backend
     volumes:
