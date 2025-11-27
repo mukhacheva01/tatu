@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null)
   const [imageErrors, setImageErrors] = useState({})
+  const carouselRef = useRef(null)
 
   const galleryImages = [
     { id: 1, src: '/images/gallery/tatu-5.jpg', alt: 'Татуировка Pink Ink Love', gradient: 'from-black to-gray-700' },
@@ -13,31 +14,96 @@ function Gallery() {
     { id: 6, src: '/images/gallery/tatu-6.jpg', alt: 'Татуировка Pink Ink Love', gradient: 'from-red-600 to-pink-600' }
   ]
 
+  // Дублируем изображения для зацикленной карусели
+  const infiniteImages = [...galleryImages, ...galleryImages, ...galleryImages]
+
   const handleImageError = (imageId) => {
     setImageErrors(prev => ({ ...prev, [imageId]: true }))
   }
 
+  const scrollCarousel = (direction) => {
+    if (carouselRef.current) {
+      const scrollAmount = 400 // Прокрутка на ширину одного изображения
+      carouselRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  }
+
+  // Устанавливаем начальную позицию в середине и обрабатываем зацикливание
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    // Устанавливаем начальную позицию в середине (второй набор изображений)
+    const imageWidth = 400 // примерная ширина изображения + gap
+    carousel.scrollLeft = imageWidth * galleryImages.length
+
+    const handleScroll = () => {
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth
+      const currentScroll = carousel.scrollLeft
+
+      // Если прокрутили в начало - перепрыгиваем в середину
+      if (currentScroll <= 0) {
+        carousel.scrollLeft = imageWidth * galleryImages.length
+      }
+      // Если прокрутили в конец - перепрыгиваем в середину
+      else if (currentScroll >= maxScroll) {
+        carousel.scrollLeft = imageWidth * galleryImages.length
+      }
+    }
+
+    carousel.addEventListener('scroll', handleScroll)
+    return () => carousel.removeEventListener('scroll', handleScroll)
+  }, [galleryImages.length])
+
   return (
     <>
-      {/* Движущийся заголовок на всю ширину */}
-      <div className="w-full overflow-hidden bg-pink-500 py-8 mb-0">
-        <div className="animate-scroll-left whitespace-nowrap">
-          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-wider text-white mx-8" style={{ textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000' }}>
+      {/* Дерзкий движущийся заголовок в стиле граффити */}
+      <div className="w-full overflow-hidden bg-black py-10 mb-0 relative border-y-4 border-pink-500">
+        {/* Розовые молнии на фоне */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-transparent via-pink-500 to-transparent transform -skew-x-12"></div>
+          <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-transparent via-pink-500 to-transparent transform skew-x-12"></div>
+          <div className="absolute top-0 left-3/4 w-1 h-full bg-gradient-to-b from-transparent via-pink-500 to-transparent transform -skew-x-12"></div>
+        </div>
+        
+        <div className="animate-scroll-left whitespace-nowrap relative z-10">
+          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-pink-500 to-pink-400 mx-10 font-black" style={{ 
+            textShadow: '0 0 40px rgba(236,72,153,0.8)',
+            filter: 'drop-shadow(3px 3px 0px rgba(0,0,0,1)) drop-shadow(-1px -1px 0px rgba(255,255,255,0.3))'
+          }}>
             ГАЛЕРЕЯ РАБОТ
           </span>
-          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-wider text-white mx-8" style={{ textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000' }}>
+          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-pink-500 to-pink-400 mx-10 font-black" style={{ 
+            textShadow: '0 0 40px rgba(236,72,153,0.8)',
+            filter: 'drop-shadow(3px 3px 0px rgba(0,0,0,1)) drop-shadow(-1px -1px 0px rgba(255,255,255,0.3))'
+          }}>
             ГАЛЕРЕЯ РАБОТ
           </span>
-          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-wider text-white mx-8" style={{ textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000' }}>
+          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-pink-500 to-pink-400 mx-10 font-black" style={{ 
+            textShadow: '0 0 40px rgba(236,72,153,0.8)',
+            filter: 'drop-shadow(3px 3px 0px rgba(0,0,0,1)) drop-shadow(-1px -1px 0px rgba(255,255,255,0.3))'
+          }}>
             ГАЛЕРЕЯ РАБОТ
           </span>
-          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-wider text-white mx-8" style={{ textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000' }}>
+          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-pink-500 to-pink-400 mx-10 font-black" style={{ 
+            textShadow: '0 0 40px rgba(236,72,153,0.8)',
+            filter: 'drop-shadow(3px 3px 0px rgba(0,0,0,1)) drop-shadow(-1px -1px 0px rgba(255,255,255,0.3))'
+          }}>
             ГАЛЕРЕЯ РАБОТ
           </span>
-          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-wider text-white mx-8" style={{ textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000' }}>
+          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-pink-500 to-pink-400 mx-10 font-black" style={{ 
+            textShadow: '0 0 40px rgba(236,72,153,0.8)',
+            filter: 'drop-shadow(3px 3px 0px rgba(0,0,0,1)) drop-shadow(-1px -1px 0px rgba(255,255,255,0.3))'
+          }}>
             ГАЛЕРЕЯ РАБОТ
           </span>
-          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-wider text-white mx-8" style={{ textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000' }}>
+          <span className="inline-block font-display text-6xl md:text-8xl uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-pink-500 to-pink-400 mx-10 font-black" style={{ 
+            textShadow: '0 0 40px rgba(236,72,153,0.8)',
+            filter: 'drop-shadow(3px 3px 0px rgba(0,0,0,1)) drop-shadow(-1px -1px 0px rgba(255,255,255,0.3))'
+          }}>
             ГАЛЕРЕЯ РАБОТ
           </span>
         </div>
@@ -51,14 +117,20 @@ function Gallery() {
         
         {/* Карусель с обрезанными краями */}
         <div className="relative z-10 w-full overflow-hidden">
-          {/* Белые градиенты по краям */}
-          <div className="absolute left-0 top-0 bottom-8 w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-8 w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-20 pointer-events-none"></div>
+          {/* Белые градиенты по краям - теперь кликабельные */}
+          <div 
+            className="absolute left-0 top-0 bottom-8 w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-20 cursor-pointer hover:from-pink-100 hover:via-pink-50 transition-colors"
+            onClick={() => scrollCarousel('left')}
+          ></div>
+          <div 
+            className="absolute right-0 top-0 bottom-8 w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-20 cursor-pointer hover:from-pink-100 hover:via-pink-50 transition-colors"
+            onClick={() => scrollCarousel('right')}
+          ></div>
           
-          <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide px-2 md:px-4">
-            {galleryImages.map((image) => (
+          <div ref={carouselRef} className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide px-2 md:px-4">
+            {infiniteImages.map((image, index) => (
               <div 
-                key={image.id} 
+                key={`${image.id}-${index}`} 
                 className="relative flex-shrink-0 w-80 h-80 md:w-96 md:h-96 rounded-xl overflow-hidden hover:scale-110 transition-all duration-300 cursor-pointer group snap-start border-2 border-pink-500/30 hover:border-pink-500 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)]"
                 onClick={() => !imageErrors[image.id] && setSelectedImage(image)}
               >

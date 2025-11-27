@@ -14,15 +14,17 @@ function Header({ onBookingClick, onCertificateClick }) {
           <div className="flex gap-3 ml-6">
             <button 
               onClick={onBookingClick}
-              className="font-manrope uppercase tracking-wide bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 bg-[length:200%_100%] animate-shimmer text-white px-4 py-2 rounded hover:opacity-90 transition hover:scale-105"
+              className="relative font-manrope uppercase tracking-wider bg-black text-pink-500 px-5 py-2.5 rounded-lg border-2 border-pink-500 hover:bg-pink-500 hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(236,72,153,0.8)] font-bold overflow-hidden group"
             >
-              Записаться
+              <span className="relative z-10">Записаться</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             </button>
             <button 
               onClick={onCertificateClick}
-              className="font-manrope uppercase tracking-wide bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 bg-[length:200%_100%] animate-shimmer text-white px-4 py-2 rounded hover:opacity-90 transition hover:scale-105"
+              className="relative font-manrope uppercase tracking-wider bg-gradient-to-r from-pink-600 to-pink-500 text-white px-5 py-2.5 rounded-lg border-2 border-pink-400 hover:from-pink-500 hover:to-pink-600 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(236,72,153,0.8)] font-bold overflow-hidden group"
             >
-              Купить сертификат
+              <span className="relative z-10">Купить сертификат</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             </button>
           </div>
         </div>
