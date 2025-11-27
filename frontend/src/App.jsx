@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Hero from './components/Hero'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import About from './components/About'
+import InfoCards from './components/InfoCards'
 import Artists from './components/Artists'
 import Gallery from './components/Gallery'
 import Contact from './components/Contact'
@@ -20,7 +20,7 @@ function App() {
         onCertificateClick={() => setIsCertificateModalOpen(true)}
       />
       <Hero onBookingClick={() => setIsBookingModalOpen(true)} />
-      <About />
+      <InfoCards />
       <Artists />
       <Gallery />
       <Contact />

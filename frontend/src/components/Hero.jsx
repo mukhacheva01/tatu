@@ -37,7 +37,7 @@ function Hero({ onBookingClick }) {
           <div className="flex gap-4 flex-wrap">
             <button 
               onClick={onBookingClick}
-              className="group relative px-8 py-4 bg-gradient-to-r from-pink-600 to-pink-500 text-black font-bold uppercase tracking-wider rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(236,72,153,0.6)]"
+              className="group relative px-8 py-4 bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 text-black font-bold uppercase tracking-wider rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] animate-shimmer bg-[length:200%_100%]"
             >
               <span className="relative z-10">Записаться</span>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
