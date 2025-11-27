@@ -4,7 +4,6 @@ import Section from '../shared/ui/Section'
 function Artists() {
   return (
     <Section id="artists" className="bg-dark text-light">
-      <h2 className="font-serif text-4xl text-center mb-12">Наш мастер</h2>
       <div className="max-w-2xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           {/* Фото мастера */}
@@ -20,21 +19,21 @@ function Artists() {
           {/* Информация о мастере */}
           <div className="w-full md:w-1/2 text-center md:text-left">
             <h3 className="font-display text-3xl mb-3 text-pink-500 uppercase tracking-wide">Имя мастера</h3>
-            <p className="text-gray-400 text-lg mb-4 font-bold">Специализация</p>
-            <div className="space-y-3 text-gray-300">
-              <p>✨ Авторские эскизы</p>
-              <p>🎨 Реализм, нео-традишнл</p>
-              <p>⚡ Опыт работы: X лет</p>
-              <p>🏆 Участник тату-конвенций</p>
+            <div className="space-y-3 text-gray-300 mb-6">
+              <p className="text-pink-400 font-semibold">Стили:</p>
+              <p>🎨 Абстракция</p>
+              <p>🌸 Япония</p>
+              <p>⚡ Олдскул</p>
+              <p>✨ Ньюскул</p>
+              <p>🖤 Минимализм</p>
             </div>
-            <div className="mt-6">
-              <a 
-                href="#gallery" 
-                className="inline-block font-manrope uppercase tracking-wide bg-pink-500 text-black px-6 py-3 rounded hover:bg-pink-400 transition font-bold"
-              >
-                Смотреть работы
-              </a>
+            <div className="space-y-2 text-gray-300 mb-6">
+              <p className="text-pink-400 font-semibold">Услуги:</p>
+              <p>• Коррекция чужих работ</p>
+              <p>• Перекрытие</p>
+              <p>• Индивидуальный эскиз</p>
             </div>
+
           </div>
         </div>
       </div>
