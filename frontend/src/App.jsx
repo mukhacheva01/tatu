@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import InfoCards from './components/InfoCards'
 import Artists from './components/Artists'
 import Gallery from './components/Gallery'
+import CertificatePromo from './components/CertificatePromo'
 import Contact from './components/Contact'
 import BookingModal from './components/BookingModal'
 import CertificateModal from './components/CertificateModal'
@@ -23,6 +24,7 @@ function App() {
       <InfoCards />
       <Artists />
       <Gallery />
+      <CertificatePromo onCertificateClick={() => setIsCertificateModalOpen(true)} />
       <Contact />
       <Footer />
       <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
