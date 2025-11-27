@@ -111,77 +111,77 @@ function BookingModal({ isOpen, onClose }) {
       
       {/* Modal */}
       <div 
-        className="relative bg-gradient-to-br from-black via-gray-900 to-black border-2 border-pink-500 rounded-lg shadow-2xl shadow-pink-500/50 max-w-md w-full max-h-[90vh] overflow-y-auto animate-slideUp"
+        className="relative bg-black border-4 border-pink-500 rounded-2xl shadow-[0_0_60px_rgba(236,72,153,0.6)] max-w-md w-full max-h-[90vh] overflow-hidden animate-slideUp"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-pink-500 hover:text-pink-400 transition-colors text-2xl font-bold z-10"
-        >
-          ✕
-        </button>
+        {/* Декоративные элементы */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-pink-600 to-pink-500 p-6 text-center">
-          <h2 className="font-display text-3xl uppercase tracking-wider text-black font-bold">
-            Запись на сеанс
-          </h2>
-          <p className="text-black/80 text-sm mt-2 font-semibold">Заполни форму и мы свяжемся с тобой</p>
+        <div className="relative bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 p-8 text-center overflow-hidden">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="relative z-10">
+            <h2 className="font-display text-4xl uppercase tracking-wider text-black font-black drop-shadow-lg">
+              Запись на сеанс
+            </h2>
+            <p className="text-black font-bold text-base mt-2">Заполни форму и мы свяжемся с тобой</p>
+          </div>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          <div>
-            <label className="block text-pink-500 text-sm font-bold mb-2 uppercase tracking-wide">
-              Имя *
-            </label>
-            <input
-              type="text"
-              className="w-full bg-black border-2 border-pink-500/50 focus:border-pink-500 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/50 transition-all"
-              placeholder="Как тебя зовут?"
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              required
-            />
-          </div>
+        <div className="max-h-[calc(90vh-200px)] overflow-y-auto custom-scrollbar">
+          <form onSubmit={handleSubmit} className="p-6 space-y-5 relative z-10">
+            <div>
+              <label className="block text-pink-400 text-sm font-bold mb-2 uppercase tracking-wide">
+                Имя *
+              </label>
+              <input
+                type="text"
+                className="w-full bg-black/60 border-2 border-pink-500/50 focus:border-pink-500 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:bg-black transition-all"
+                placeholder="Как тебя зовут?"
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                required
+              />
+            </div>
 
-          <div>
-            <label className="block text-pink-500 text-sm font-bold mb-2 uppercase tracking-wide">
-              Телефон *
-            </label>
-            <input
-              type="tel"
-              className="w-full bg-black border-2 border-pink-500/50 focus:border-pink-500 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/50 transition-all"
-              placeholder="+7 (___) ___-__-__"
-              value={formData.phone}
-              onChange={(e) => setFormData({...formData, phone: e.target.value})}
-              required
-            />
-          </div>
+            <div>
+              <label className="block text-pink-400 text-sm font-bold mb-2 uppercase tracking-wide">
+                Телефон *
+              </label>
+              <input
+                type="tel"
+                className="w-full bg-black/60 border-2 border-pink-500/50 focus:border-pink-500 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:bg-black transition-all"
+                placeholder="+7 (___) ___-__-__"
+                value={formData.phone}
+                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                required
+              />
+            </div>
 
-          <div>
-            <label className="block text-pink-500 text-sm font-bold mb-2 uppercase tracking-wide">
-              Email
-            </label>
-            <input
-              type="email"
-              className="w-full bg-black border-2 border-pink-500/50 focus:border-pink-500 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/50 transition-all"
-              placeholder="your@email.com"
-              value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
-            />
-          </div>
+            <div>
+              <label className="block text-pink-400 text-sm font-bold mb-2 uppercase tracking-wide">
+                Email
+              </label>
+              <input
+                type="email"
+                className="w-full bg-black/60 border-2 border-pink-500/50 focus:border-pink-500 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:bg-black transition-all"
+                placeholder="your@email.com"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+              />
+            </div>
 
-          <div className="relative">
-            <label className="block text-pink-500 text-sm font-bold mb-2 uppercase tracking-wide">
-              Желаемая дата *
-            </label>
-            <button
-              type="button"
-              onClick={() => setShowCalendar(!showCalendar)}
-              className="w-full bg-black border-2 border-pink-500/50 hover:border-pink-500 rounded px-4 py-3 text-left text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50 transition-all flex items-center justify-between"
-            >
+            <div className="relative">
+              <label className="block text-pink-400 text-sm font-bold mb-2 uppercase tracking-wide">
+                Желаемая дата *
+              </label>
+              <button
+                type="button"
+                onClick={() => setShowCalendar(!showCalendar)}
+                className="w-full bg-black/60 border-2 border-pink-500/50 hover:border-pink-500 rounded-lg px-4 py-3 text-left text-white focus:outline-none focus:ring-2 focus:ring-pink-500/50 transition-all flex items-center justify-between"
+              >
               <span className={formData.date ? 'text-white' : 'text-gray-500'}>
                 {formatDisplayDate(formData.date)}
               </span>
@@ -247,56 +247,57 @@ function BookingModal({ isOpen, onClose }) {
             )}
           </div>
 
-          {/* Выбор времени */}
-          {formData.date && (
-            <div>
-              <label className="block text-pink-500 text-sm font-bold mb-2 uppercase tracking-wide">
-                Выбери время *
-              </label>
-              <div className="grid grid-cols-4 gap-2">
-                {timeSlots.map(slot => (
-                  <button
-                    key={slot}
-                    type="button"
-                    onClick={() => setFormData({...formData, time: slot})}
-                    className={`
-                      py-2 px-3 rounded text-sm font-bold transition-all
-                      ${formData.time === slot 
-                        ? 'bg-pink-500 text-black' 
-                        : 'bg-black border border-pink-500/50 text-pink-500 hover:border-pink-500 hover:bg-pink-500/10'
-                      }
-                    `}
-                  >
-                    {slot}
-                  </button>
-                ))}
+            {/* Выбор времени */}
+            {formData.date && (
+              <div>
+                <label className="block text-pink-400 text-sm font-bold mb-2 uppercase tracking-wide">
+                  Выбери время *
+                </label>
+                <div className="grid grid-cols-4 gap-2">
+                  {timeSlots.map(slot => (
+                    <button
+                      key={slot}
+                      type="button"
+                      onClick={() => setFormData({...formData, time: slot})}
+                      className={`
+                        py-2 px-3 rounded-lg text-sm font-bold transition-all transform hover:scale-105
+                        ${formData.time === slot 
+                          ? 'bg-pink-500 text-black shadow-[0_0_15px_rgba(236,72,153,0.5)]' 
+                          : 'bg-black/60 border-2 border-pink-500/50 text-pink-400 hover:border-pink-500 hover:bg-pink-500/10'
+                        }
+                      `}
+                    >
+                      {slot}
+                    </button>
+                  ))}
+                </div>
               </div>
+            )}
+
+            <div>
+              <label className="block text-pink-400 text-sm font-bold mb-2 uppercase tracking-wide">
+                Описание идеи
+              </label>
+              <textarea
+                rows="4"
+                className="w-full bg-black/60 border-2 border-pink-500/50 focus:border-pink-500 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:bg-black transition-all resize-none"
+                placeholder="Расскажи о своей идее татуировки..."
+                value={formData.description}
+                onChange={(e) => setFormData({...formData, description: e.target.value})}
+              ></textarea>
             </div>
-          )}
 
-          <div>
-            <label className="block text-pink-500 text-sm font-bold mb-2 uppercase tracking-wide">
-              Описание идеи
-            </label>
-            <textarea
-              rows="4"
-              className="w-full bg-black border-2 border-pink-500/50 focus:border-pink-500 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/50 transition-all resize-none"
-              placeholder="Расскажи о своей идее татуировки..."
-              value={formData.description}
-              onChange={(e) => setFormData({...formData, description: e.target.value})}
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-400 text-black font-bold py-4 px-6 rounded uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/70"
-          >
-            Отправить заявку
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 hover:from-pink-500 hover:via-pink-400 hover:to-pink-500 text-black font-black py-4 px-6 rounded-xl uppercase tracking-wider transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:shadow-[0_0_50px_rgba(236,72,153,0.8)] text-lg"
+            >
+              Отправить заявку
+            </button>
+          </form>
+        </div>
 
         {/* Footer accent */}
-        <div className="h-2 bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600"></div>
+        <div className="h-3 bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600"></div>
       </div>
     </div>
   )
