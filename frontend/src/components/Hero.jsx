@@ -69,7 +69,7 @@ function Hero({ onBookingClick }) {
           <img
             src="/images/hero-machine.jpg"
             alt="Тату-машинка"
-            className="relative rounded-xl shadow-[0_0_50px_rgba(236,72,153,0.3)] object-contain w-full h-auto max-h-[500px] border border-pink-500/20"
+            className="relative rounded-xl shadow-[0_0_50px_rgba(236,72,153,0.3)] object-cover w-full h-auto max-h-[500px]"
           />
         </div>
       </div>
