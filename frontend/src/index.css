@@ -49,7 +49,7 @@
   src: url('/assets/fonts/Old-Horror-Films-1-0.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -57,7 +57,7 @@
   src: url('/assets/fonts/Oranienbaum-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* Фикс для шрифта Old Horror Films - предотвращаем обрезание */
