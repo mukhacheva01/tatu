@@ -83,3 +83,16 @@ git push origin main
 ```
 
 Render автоматически пересоберет и задеплоит изменения.
+
+## Исправления (28.11.2024)
+
+### Проблема с шрифтами на продакшене
+**Решение:** Шрифты перемещены из `frontend/assets/fonts` в `frontend/public/assets/fonts`
+- Пути в CSS изменены с `./assets/fonts/` на `/assets/fonts/`
+- Теперь Vite правильно копирует шрифты в dist при сборке
+
+### Размытие по бокам Hero изображения
+**Решение:** Изменен градиент в Hero компоненте
+- `backgroundPosition` изменен с `right center` на `center`
+- Градиент изменен с `from-black via-black/80 to-transparent` на `from-black via-black/70 to-black/30`
+- Теперь размытие равномерное по всей ширине

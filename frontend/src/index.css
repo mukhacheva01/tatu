@@ -14,7 +14,7 @@
 
 @font-face {
   font-family: 'Oswald';
-  src: url('./assets/fonts/Oswald/Oswald-VariableFont_wght.ttf') format('truetype');
+  src: url('/assets/fonts/Oswald/Oswald-VariableFont_wght.ttf') format('truetype');
   font-weight: 200 700;
   font-style: normal;
   font-display: swap;
@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: 'Russo One';
-  src: url('./assets/fonts/RussoOne/RussoOne-Regular.ttf') format('truetype');
+  src: url('/assets/fonts/Russo_One/RussoOne-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -30,7 +30,7 @@
 
 @font-face {
   font-family: 'Manrope';
-  src: url('./assets/fonts/Manrope/Manrope-VariableFont_wght.ttf') format('truetype');
+  src: url('/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf') format('truetype');
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
@@ -38,7 +38,7 @@
 
 @font-face {
   font-family: 'Rubik';
-  src: url('./assets/fonts/Rubik/Rubik-VariableFont_wght.ttf') format('truetype');
+  src: url('/assets/fonts/Rubik/Rubik-VariableFont_wght.ttf') format('truetype');
   font-weight: 300 900;
   font-style: normal;
   font-display: swap;
@@ -46,7 +46,7 @@
 
 @font-face {
   font-family: 'Old Horror Films';
-  src: url('./assets/fonts/Old-Horror-Films-1-0.ttf') format('truetype');
+  src: url('/assets/fonts/Old-Horror-Films-1-0.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -54,7 +54,7 @@
 
 @font-face {
   font-family: 'Oranienbaum';
-  src: url('./assets/fonts/Oranienbaum-Regular.ttf') format('truetype');
+  src: url('/assets/fonts/Oranienbaum-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;

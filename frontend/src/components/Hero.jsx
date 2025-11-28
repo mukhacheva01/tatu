@@ -7,9 +7,9 @@ function Hero({ onBookingClick }) {
   }
   const bgUrl = '/images/hero-ink.jpg'
   return (
-    <section className="relative h-screen bg-black text-light overflow-hidden" style={{ backgroundImage: `url(${bgUrl})`, backgroundPosition: 'right center', backgroundSize: 'cover' }}>
+    <section className="relative h-screen bg-black text-light overflow-hidden" style={{ backgroundImage: `url(${bgUrl})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
       {/* Агрессивный градиент */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/30 z-0"></div>
       
       {/* Розовое свечение */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-pink-500/20 blur-[120px] rounded-full z-0"></div>
